@@ -1,0 +1,85 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package openclassroom;
+
+import java.util.Scanner;
+
+/**
+ *
+ * @author zhlp
+ */
+public class Openclassroom {
+
+    /**
+     * @param args the command line arguments
+     */
+    private static char Ans;
+    public static void main(String[] args) {
+    System.out.println("CONVERTISSEUR DEGRÉS CELSIUS ET DEGRÉS FAHRENHEIT");
+    System.out.println("-------------------------------------------------");
+        
+    Scanner sc = new Scanner(System.in);
+   
+        String mode;
+       
+    do{
+         System.out.println("Choissez le mode de conversion;");
+         System.out.println("1 - Convertisseur Celsius-Fahrenheit");
+         System.out.println("2 - Convertisseur Fahrenheit-Cesius");
+         mode = sc.nextLine();
+         
+        while((mode.charAt(0)!='1')&&(mode.charAt(0)!='2')){
+            System.out.println(" System.out.println(\"Mode inconnu, veuillez réitérer votre choix.\");");
+             System.out.println("Choissez le mode de conversion;");
+             System.out.println("1 - Convertisseur Celsius-Fahrenheit");
+             System.out.println("2 - Convertisseur Fahrenheit-Cesius");
+             mode = sc.nextLine();
+        }
+        
+        if(mode.charAt(0)=='2'){
+            System.out.println("Temperature a convertir :");
+            String F=sc.nextLine();
+            int f=Integer.parseInt(F);
+            double c=(f-32)*5.0/9.0;
+            System.out.print(f + " °F correspond à : ");
+            System.out.println(arrondi(c,3) + " °C.");
+           
+       }
+         if(mode.charAt(0)=='1'){
+            System.out.println("Temperature a convertir :");
+            String C2=sc.nextLine();
+            int c2=Integer.parseInt(C2);
+            double f2=9.0*c2/5.0+32;
+            System.out.print(c2+ " °C correspond à : ");
+            System.out.println( arrondi(f2,3) + " °F.");
+           
+       }
+           System.out.println("Souhitez-vous convertir une autre temperature ? (O/N)");
+            String Answer=sc.nextLine();
+            Ans = Answer.charAt(0);
+            
+             if('N'==Ans){
+         System.out.println("Au revoir ;)");
+    }
+    while(( 'O'!=Ans )&&(Ans!='N')  ){
+         System.out.println(" System.out.println(\"Mode inconnu, veuillez réitérer votre choix.\");");
+        System.out.println("Souhitez-vous convertir une autre temperature ? (O/N)");
+             Answer=sc.nextLine();
+            Ans = Answer.charAt(0);
+             if('N'==Ans){
+         System.out.println("Au revoir ;)");
+    }
+    }
+        
+        
+    }while(Ans=='O');
+   }
+    public static double arrondi(double A, int B) {
+    return (double) ( (int) (A * Math.pow(10, B) + .5)) / Math.pow(10, B);
+  } 
+    
+    
+}
